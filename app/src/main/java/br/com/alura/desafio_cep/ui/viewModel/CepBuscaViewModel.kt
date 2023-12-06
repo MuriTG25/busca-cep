@@ -27,7 +27,7 @@ class CepBuscaViewModel @Inject constructor(
         _uiState.update { cepBuscaUiState ->
             cepBuscaUiState.copy(
                 naMudancaDeCep = {
-                    if(it.length < 9){
+                    if (it.length < 9) {
                         _uiState.value = _uiState.value.copy(
                             cep = it
                         )
@@ -68,21 +68,24 @@ class CepBuscaViewModel @Inject constructor(
         }
     }
 
-    private fun buscarEndereco(cep:String) {
+    private fun buscarEndereco(cep: String) {
         job.cancel()
         job = viewModelScope.launch {
             delay(2000)
-            Log.i("CepBuscaViewModel","CEP: $cep")
-            repository.encontraEnderecoPeloCep(cep)?.let { endereco ->
-                _uiState.update {
-                    it.copy(
-                        logradouro = endereco.logradouro,
-                        bairro = endereco.bairro,
-                        cidade = endereco.cidade,
-                        estado = endereco.estado,
-                        complemento = endereco.complemento
-                    )
-                }
+            Log.i("CepBuscaViewModel", "CEP: $cep")
+            repository.encontraEnderecoPeloCep(cep).collect {
+                Log.i("CepBuscaViewModel", "Endereco: ${it.toString()}")
+                it?.let { endereco ->
+                    _uiState.update { state ->
+                        state.copy(
+                            logradouro = endereco.logradouro,
+                            bairro = endereco.bairro,
+                            cidade = endereco.cidade,
+                            estado = endereco.estado,
+                            complemento = endereco.complemento
+                        )
+                    }
+                } ?: Log.i("CepBuscaViewModel", "Erro de conexao com a internet")
             }
         }
     }
@@ -98,7 +101,7 @@ class CepBuscaViewModel @Inject constructor(
                 estado = estado,
                 complemento = complemento
             )
-            Log.i("CepBuscaViewModel","Endereco salvo = $endereco")
+            Log.i("CepBuscaViewModel", "Endereco salvo = $endereco")
         }
     }
 }
