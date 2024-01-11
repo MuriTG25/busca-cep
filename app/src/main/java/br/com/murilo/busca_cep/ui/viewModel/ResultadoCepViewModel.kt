@@ -2,9 +2,10 @@ package br.com.murilo.busca_cep.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.murilo.busca_cep.aplicacao.extras.textoParaCopiar
+import br.com.murilo.busca_cep.aplicacao.modelo.EnderecoResponse
 import br.com.murilo.busca_cep.aplicacao.modelo.toEnderecoDTO
 import br.com.murilo.busca_cep.aplicacao.repositorio.BuscaCepRepositorio
-import br.com.murilo.busca_cep.aplicacao.modelo.EnderecoResponse
 import br.com.murilo.busca_cep.ui.stateholder.ResultadoCepUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -56,7 +57,8 @@ class ResultadoCepViewModel @Inject constructor(
                     bairro = bairro,
                     cidade = cidade,
                     estado = estado,
-                    complemento = complemento
+                    complemento = complemento,
+                    textoParaCopiar = textoParaCopiar()
                 )
             }
         }
