@@ -26,6 +26,7 @@ import br.com.murilo.busca_cep.ui.stateholder.ResultadoCepUiState
 
 @Composable
 fun ResultadoCepScreen(
+    modifier: Modifier = Modifier,
     uiState: ResultadoCepUiState,
     aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
     navegarParaTelaAnterior: () -> Unit = {},
@@ -43,7 +44,7 @@ fun ResultadoCepScreen(
             )
         }
         is ResultadoCepUiState.Sucesso -> {
-                Column (modifier = Modifier.fillMaxSize()
+                Column (modifier = modifier.fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically),
                     verticalArrangement = Arrangement.spacedBy(margemPadrao),
                     horizontalAlignment = Alignment.CenterHorizontally

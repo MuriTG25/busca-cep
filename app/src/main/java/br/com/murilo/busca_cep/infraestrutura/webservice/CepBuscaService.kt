@@ -6,11 +6,8 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import javax.inject.Inject
 
-private const val urlBase = "https://viacep.com.br/ws/"
-
 private const val tipoResponse = "/json/"
-
-private fun enderecoCompleto(cep: String) = urlBase+cep+ tipoResponse
+private fun enderecoCompleto(cep: String) = cep+tipoResponse
 
 class CepBuscaService @Inject constructor(
     private val client: HttpClient

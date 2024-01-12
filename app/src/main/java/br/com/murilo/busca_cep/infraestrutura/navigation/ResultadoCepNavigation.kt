@@ -6,15 +6,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import br.com.murilo.busca_cep.aplicacao.extras.cepValor
 import br.com.murilo.busca_cep.ui.screen.ResultadoCepScreen
 import br.com.murilo.busca_cep.ui.viewModel.ResultadoCepViewModel
 
 internal const val rotaResultadoCep = "resultadoCep"
+private const val rotaResultadoCepCompleta = "$rotaResultadoCep/{$cepValor}"
 
 fun NavGraphBuilder.ResultadoCepNavController(
     navegarParaTelaAnterior: () -> Unit = {},
 ){
-    composable(route = rotaResultadoCep){
+    composable(route = rotaResultadoCepCompleta){
         val viewModel = hiltViewModel<ResultadoCepViewModel>()
         val uiState by viewModel.uiState.collectAsState()
         ResultadoCepScreen(
@@ -22,14 +24,13 @@ fun NavGraphBuilder.ResultadoCepNavController(
             aoTentarBuscarNovamenteOEndereco = {
                 viewModel.carregaEndereco()
             },
-            navegarParaTelaAnterior = navegarParaTelaAnterior
-
+            navegarParaTelaAnterior = navegarParaTelaAnterior,
         )
     }
 }
 
-fun NavController.navegarParaResultadoCep() {
-    navigate(rotaResultadoCep) {
+fun NavController.navegarParaResultadoCep(cep: String) {
+    navigate("$rotaResultadoCep/{${cep}}") {
         launchSingleTop = true
         popUpTo(rotaResultadoCep) {
             inclusive = false

@@ -6,16 +6,21 @@ import androidx.navigation.compose.NavHost
 
 @Composable
 fun BuscaCepNavHost(
-    navHostController: NavHostController
+    navHostController: NavHostController,
 ) {
     NavHost(
         navController = navHostController,
         startDestination = rotaResultadoCep
-    ){
+    ) {
         ResultadoCepNavController(
             navegarParaTelaAnterior = {
-
+                navHostController.popBackStack()
             },
+        )
+        BuscaCepNavController(
+            navegarParaTelaResultado = { cep ->
+                navHostController.navegarParaResultadoCep(cep)
+            }
         )
     }
 }
