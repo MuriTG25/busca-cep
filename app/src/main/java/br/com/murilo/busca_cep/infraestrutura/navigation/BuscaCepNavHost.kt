@@ -10,7 +10,7 @@ fun BuscaCepNavHost(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = rotaResultadoCep
+        startDestination = rotaResultadoCepCompleta
     ) {
         ResultadoCepNavController(
             navegarParaTelaAnterior = {

@@ -10,8 +10,8 @@ import br.com.murilo.busca_cep.aplicacao.extras.cepValor
 import br.com.murilo.busca_cep.ui.screen.ResultadoCepScreen
 import br.com.murilo.busca_cep.ui.viewModel.ResultadoCepViewModel
 
-internal const val rotaResultadoCep = "resultadoCep"
-private const val rotaResultadoCepCompleta = "$rotaResultadoCep/{$cepValor}"
+private const val rotaResultadoCep = "resultadoCep"
+internal const val rotaResultadoCepCompleta = "$rotaResultadoCep/{$cepValor}"
 
 fun NavGraphBuilder.ResultadoCepNavController(
     navegarParaTelaAnterior: () -> Unit = {},
