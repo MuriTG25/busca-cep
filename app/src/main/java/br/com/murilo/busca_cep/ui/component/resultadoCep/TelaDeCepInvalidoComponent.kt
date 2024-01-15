@@ -1,4 +1,4 @@
-package br.com.murilo.busca_cep.ui.component
+package br.com.murilo.busca_cep.ui.component.resultadoCep
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,12 +13,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.murilo.busca_cep.ui.component.comum.BotaoComponent
+import br.com.murilo.busca_cep.ui.component.comum.TextoComponent
 import br.com.murilo.busca_cep.ui.extras.margemPadrao
 import br.com.murilo.busca_cep.ui.extras.tamanhoFonteGrande
 
 @Composable
-fun TelaDeFalhaComponent(
-    aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
+fun TelaDeCepInvalidoComponent(
     voltarTelaAnterior: () -> Unit = {},
 ) {
     Column(
@@ -35,16 +34,12 @@ fun TelaDeFalhaComponent(
             modifier = Modifier
                 .fillMaxWidth()
             ,
-            texto = "Falha ao buscar o Endereço",
+            texto = "O valor do CEP é inválido",
             fontSize = tamanhoFonteGrande,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
 
-        )
-        BotaoComponent(
-            texto = "Recarregar página",
-            noClicarBotao = aoTentarBuscarNovamenteOEndereco,
-        )
+            )
         BotaoComponent(
             texto = "Voltar",
             noClicarBotao = voltarTelaAnterior,
@@ -54,6 +49,6 @@ fun TelaDeFalhaComponent(
 
 @Preview(showSystemUi = true)
 @Composable
-private fun TelaDeFalhaComponentPreview() {
-    TelaDeFalhaComponent()
+private fun TelaDeCepInvalidoComponentPreview() {
+    TelaDeCepInvalidoComponent()
 }

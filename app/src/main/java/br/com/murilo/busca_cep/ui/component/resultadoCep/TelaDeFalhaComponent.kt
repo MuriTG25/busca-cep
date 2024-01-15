@@ -1,4 +1,4 @@
-package br.com.murilo.busca_cep.ui.component
+package br.com.murilo.busca_cep.ui.component.resultadoCep
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,11 +13,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.com.murilo.busca_cep.ui.component.comum.BotaoComponent
+import br.com.murilo.busca_cep.ui.component.comum.TextoComponent
 import br.com.murilo.busca_cep.ui.extras.margemPadrao
 import br.com.murilo.busca_cep.ui.extras.tamanhoFonteGrande
 
 @Composable
-fun TelaDeCepInvalidoComponent(
+fun TelaDeFalhaComponent(
+    aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
     voltarTelaAnterior: () -> Unit = {},
 ) {
     Column(
@@ -32,12 +35,16 @@ fun TelaDeCepInvalidoComponent(
             modifier = Modifier
                 .fillMaxWidth()
             ,
-            texto = "O valor do CEP é inválido",
+            texto = "Falha ao buscar o Endereço",
             fontSize = tamanhoFonteGrande,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
 
-            )
+        )
+        BotaoComponent(
+            texto = "Recarregar página",
+            noClicarBotao = aoTentarBuscarNovamenteOEndereco,
+        )
         BotaoComponent(
             texto = "Voltar",
             noClicarBotao = voltarTelaAnterior,
@@ -47,6 +54,6 @@ fun TelaDeCepInvalidoComponent(
 
 @Preview(showSystemUi = true)
 @Composable
-private fun TelaDeCepInvalidoComponentPreview() {
-    TelaDeCepInvalidoComponent()
+private fun TelaDeFalhaComponentPreview() {
+    TelaDeFalhaComponent()
 }

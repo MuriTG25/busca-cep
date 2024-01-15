@@ -1,6 +1,7 @@
 package br.com.murilo.busca_cep.ui.viewModel
 
 import androidx.lifecycle.ViewModel
+import br.com.murilo.busca_cep.ui.extras.ehNumeroSemSimbolos
 import br.com.murilo.busca_cep.ui.stateholder.BuscaCepUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,9 +21,15 @@ class BuscaCepViewModel @Inject constructor(
                 alteracaoDoCep = {
                     if (it.length < 9) {
                         _uiState.value = _uiState.value.copy(
-                            cep = it
+                            cep = it,
+                            mensagemCampoVazio = false
                         )
                     }
+                },
+                naAlteracaoDaMensagemCepMenos8Digitos = {
+                    _uiState.value = _uiState.value.copy(
+                        mensagemCepMenos8Digitos = it
+                    )
                 }
             )
 
@@ -39,13 +46,14 @@ class BuscaCepViewModel @Inject constructor(
                     mensagemCampoVazio = true
                 )
             }
-        } else if (cep.length != 8) {
+        } else if (cep.length != 8 || !cep.ehNumeroSemSimbolos()) {
             _uiState.update {
                 it.copy(
                     mensagemCepMenos8Digitos = true
                 )
             }
-        } else {
+        }
+        else {
             navegarParaTelaDeResultado(cep)
         }
     }

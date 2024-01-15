@@ -1,4 +1,4 @@
-package br.com.murilo.busca_cep.ui.component
+package br.com.murilo.busca_cep.ui.component.comum
 
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text

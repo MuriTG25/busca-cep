@@ -1,4 +1,4 @@
-package br.com.murilo.busca_cep.ui.component
+package br.com.murilo.busca_cep.ui.component.comum
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width

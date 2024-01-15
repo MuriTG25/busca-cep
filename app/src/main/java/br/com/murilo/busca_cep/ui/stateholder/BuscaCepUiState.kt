@@ -5,4 +5,5 @@ data class BuscaCepUiState(
     val alteracaoDoCep: (String) -> Unit = {},
     val mensagemCampoVazio: Boolean = false,
     val mensagemCepMenos8Digitos: Boolean = false,
+    val naAlteracaoDaMensagemCepMenos8Digitos: (Boolean) -> Unit = {},
 )

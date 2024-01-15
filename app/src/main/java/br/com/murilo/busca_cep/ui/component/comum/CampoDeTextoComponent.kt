@@ -1,4 +1,4 @@
-package br.com.murilo.busca_cep.ui.component
+package br.com.murilo.busca_cep.ui.component.comum
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
