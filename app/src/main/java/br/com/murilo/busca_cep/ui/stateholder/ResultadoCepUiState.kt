@@ -5,6 +5,8 @@ import androidx.compose.ui.text.AnnotatedString
 sealed class ResultadoCepUiState{
     object Carregando: ResultadoCepUiState()
     object Falha: ResultadoCepUiState()
+
+    object CepInvalido: ResultadoCepUiState()
     data class Sucesso(
         val cep: String = "",
         val logradouro: String = "",

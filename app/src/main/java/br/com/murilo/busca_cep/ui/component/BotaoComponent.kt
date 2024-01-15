@@ -11,6 +11,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
@@ -24,13 +25,14 @@ fun BotaoComponent(
     fontSize: TextUnit = tamanhoFontePadrao,
     temImagem: Boolean = false,
     imagem: ImageVector = Icons.Filled.KeyboardArrowDown,
+    corDoBotao: Color =  MaterialTheme.colorScheme.primary,
     noClicarBotao: () -> Unit = {}
 ) {
     Button(
         onClick = noClicarBotao,
         modifier = modifier,
         shape = RoundedCornerShape(20),
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+        colors = ButtonDefaults.buttonColors(containerColor = corDoBotao),
 
 
         ) {

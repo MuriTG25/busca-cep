@@ -18,7 +18,11 @@ fun NavGraphBuilder.BuscaCepNavController(
         val uiState by viewModel.uiState.collectAsState()
         BuscaCepScreen(
             uiState = uiState,
-            navegarParaTelaResultado = navegarParaTelaResultado
+            navegarParaTelaResultado = {
+                viewModel.buscaCep{cep->
+                    navegarParaTelaResultado(cep)
+                }
+            }
         )
     }
 }

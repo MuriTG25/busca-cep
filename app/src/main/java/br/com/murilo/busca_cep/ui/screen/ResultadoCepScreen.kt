@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.murilo.busca_cep.ui.component.BotaoComponent
 import br.com.murilo.busca_cep.ui.component.TelaDeCarregamentoComponent
+import br.com.murilo.busca_cep.ui.component.TelaDeCepInvalidoComponent
 import br.com.murilo.busca_cep.ui.component.TelaDeFalhaComponent
 import br.com.murilo.busca_cep.ui.component.TextoCopiavelComponent
 import br.com.murilo.busca_cep.ui.extras.margemPadrao
@@ -43,8 +44,14 @@ fun ResultadoCepScreen(
                 voltarTelaAnterior = navegarParaTelaAnterior,
             )
         }
+        ResultadoCepUiState.CepInvalido -> {
+            TelaDeCepInvalidoComponent(
+                voltarTelaAnterior = navegarParaTelaAnterior
+            )
+        }
         is ResultadoCepUiState.Sucesso -> {
-                Column (modifier = modifier.fillMaxSize()
+                Column (modifier = modifier
+                    .fillMaxSize()
                     .wrapContentHeight(Alignment.CenterVertically),
                     verticalArrangement = Arrangement.spacedBy(margemPadrao),
                     horizontalAlignment = Alignment.CenterHorizontally

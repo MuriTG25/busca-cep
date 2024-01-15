@@ -1,7 +1,10 @@
 package br.com.murilo.busca_cep.ui.viewModel
 
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.murilo.busca_cep.aplicacao.extras.CEP_VALOR
 import br.com.murilo.busca_cep.aplicacao.extras.textoParaCopiar
 import br.com.murilo.busca_cep.aplicacao.modelo.EnderecoResponse
 import br.com.murilo.busca_cep.aplicacao.modelo.toEnderecoDTO
@@ -19,24 +22,32 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ResultadoCepViewModel @Inject constructor(
-    private val repositorio: BuscaCepRepositorio
+    private val repositorio: BuscaCepRepositorio,
+    stateHandle: SavedStateHandle,
 ):ViewModel(){
     private val _uiState = MutableStateFlow<ResultadoCepUiState>(
         ResultadoCepUiState.Carregando
     )
     val uiState = _uiState.asStateFlow()
+    private val cep = stateHandle.get<String>(CEP_VALOR)
     private var job: Job? = null
     init {
-        carregaEndereco()
+        cep?.let {
+            carregaEndereco(it)
+        }
     }
 
-    fun carregaEndereco() {
+    fun carregaEndereco(cep:String) {
        job?.cancel()
        job = viewModelScope.launch {
-           repositorio.buscaCep("13329264").onStart {
+           repositorio.buscaCep(cep).onStart {
                telaDeCarregamento()
            }.lastOrNull()?.let {endereco->
-               telaDeSucesso(endereco)
+               if(endereco.erro){
+                   telaDeCepInvalido()
+               } else{
+                   telaDeSucesso(endereco)
+               }
            } ?: telaDeFalha()
        }
 
@@ -66,6 +77,11 @@ class ResultadoCepViewModel @Inject constructor(
     private fun telaDeFalha(){
         _uiState.update {
             ResultadoCepUiState.Falha
+        }
+    }
+    private fun telaDeCepInvalido(){
+        _uiState.update {
+            ResultadoCepUiState.CepInvalido
         }
     }
 }
