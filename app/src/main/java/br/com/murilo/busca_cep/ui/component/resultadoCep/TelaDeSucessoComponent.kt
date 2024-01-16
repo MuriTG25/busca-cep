@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +33,8 @@ fun TelaDeSucessoComponent(
         modifier = modifier
             .fillMaxSize()
             .wrapContentHeight(Alignment.CenterVertically)
-            .padding(margemPadrao),
+            .padding(margemPadrao)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(margemPadrao),
         horizontalAlignment = Alignment.CenterHorizontally
 

@@ -4,11 +4,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,21 +46,25 @@ fun BuscaCepScreen(
         modifier = modifier
             .fillMaxSize()
             .background(amareloSecundario)
-            .padding(margemPadrao),
+            .padding(margemPadrao)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(margemPadrao)
     ) {
         ImagemComponent()
+        Spacer(
+            modifier = Modifier.fillMaxWidth()
+                .height(100.dp)
+        )
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(amareloSecundario)
-                .wrapContentHeight(Alignment.CenterVertically)
-                .offset(0.dp, (-100).dp),
+                .wrapContentHeight(Alignment.CenterVertically),
             verticalArrangement = Arrangement.spacedBy(margemPadrao)
         ) {
             if(uiState.mensagemCampoVazio){
                 TextoComponent(
-                    texto = "O campo é obrigatório",
+                    texto = "*O campo do CEP é obrigatório",
                     color = Color.Red,
                     fontSize = tamanhoFonteMini,
                     fontWeight = FontWeight.Bold

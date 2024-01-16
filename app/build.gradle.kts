@@ -18,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "br.com.murilo.busca_cep.ConfiguradorTesteHilt"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -62,6 +62,7 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    androidTestImplementation("io.ktor:ktor-client-mock:$ktorVersion")
     val navigationVersion = "2.7.6"
     implementation ("androidx.navigation:navigation-compose:$navigationVersion")
     val hiltVersion = "2.50"

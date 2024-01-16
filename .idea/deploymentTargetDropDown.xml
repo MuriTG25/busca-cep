@@ -18,6 +18,21 @@
           <timeTargetWasSelectedWithDropDown value="2024-01-11T16:36:49.687197200Z" />
         </State>
       </entry>
+      <entry key="dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosEmVoltar()">
+        <State />
+      </entry>
+      <entry key="dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosForaDele()">
+        <State />
+      </entry>
+      <entry key="dadoUmTextoDigitado_deveContinuarMostrando_QuandoRotacionarmosATela()">
+        <State />
+      </entry>
+      <entry key="deveMostarOTextoDigitado_QuandoDigitarmosAlgoNoCampoDoCep()">
+        <State />
+      </entry>
+      <entry key="deveMostarOsComponentesDaTela_QuandoAbrirOApp()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
