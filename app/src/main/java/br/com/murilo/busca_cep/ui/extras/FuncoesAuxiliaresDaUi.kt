@@ -34,12 +34,3 @@ object CepOffsetMapping : OffsetMapping {
     }
 }
 
-fun String.existeElemento():Boolean{
-    return !isNullOrBlank()
-}
-
-fun String.ehNumeroSemSimbolos():Boolean{
-    return toIntOrNull()?.let {
-        it > 0
-    } ?: false
-}

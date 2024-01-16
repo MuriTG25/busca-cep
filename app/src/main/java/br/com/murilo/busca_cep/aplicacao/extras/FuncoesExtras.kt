@@ -8,3 +8,15 @@ fun EnderecoDTO.textoParaCopiar(): AnnotatedString {
      else " $complemento -"
     return AnnotatedString("$logradouro,$textoComplemento $bairro - $cidade - $estado - $cep")
 }
+fun String.naoEhVazioOuNulo():Boolean{
+    return !isNullOrBlank()
+}
+
+fun String.ehNumeroSemSimbolos():Boolean{
+    return toIntOrNull()?.let {
+        it > 0
+    } ?: false
+}
+fun String.naoTem8Digitos():Boolean{
+    return length != 8
+}

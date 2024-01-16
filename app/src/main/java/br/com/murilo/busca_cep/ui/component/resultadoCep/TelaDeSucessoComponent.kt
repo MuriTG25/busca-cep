@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
@@ -13,12 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.murilo.busca_cep.aplicacao.extras.naoEhVazioOuNulo
 import br.com.murilo.busca_cep.ui.component.comum.BotaoComponent
-import br.com.murilo.busca_cep.ui.component.comum.TextoCopiavelComponent
 import br.com.murilo.busca_cep.ui.extras.enderecoDeTeste
-import br.com.murilo.busca_cep.ui.extras.existeElemento
 import br.com.murilo.busca_cep.ui.extras.margemPadrao
 import br.com.murilo.busca_cep.ui.extras.mensagemDeAviso
 import br.com.murilo.busca_cep.ui.stateholder.ResultadoCepUiState
@@ -40,32 +37,32 @@ fun TelaDeSucessoComponent(
 
     ) {
         ColunaResultadoComponent(
-            existeElemento = uiState.cep.existeElemento(),
+            existeElemento = uiState.cep.naoEhVazioOuNulo(),
             textoDaDescricao = "CEP",
             textoDoCampo = uiState.cep,
         )
         ColunaResultadoComponent(
-            existeElemento = uiState.logradouro.existeElemento(),
+            existeElemento = uiState.logradouro.naoEhVazioOuNulo(),
             textoDaDescricao = "Logradouro",
             textoDoCampo = uiState.logradouro
         )
         ColunaResultadoComponent(
-            existeElemento = uiState.complemento.existeElemento(),
+            existeElemento = uiState.complemento.naoEhVazioOuNulo(),
             textoDaDescricao = "Complemento",
             textoDoCampo = uiState.complemento,
         )
         ColunaResultadoComponent(
-            existeElemento = uiState.bairro.existeElemento(),
+            existeElemento = uiState.bairro.naoEhVazioOuNulo(),
             textoDaDescricao = "Bairro",
             textoDoCampo = uiState.bairro
         )
         ColunaResultadoComponent(
-            existeElemento = uiState.cidade.existeElemento(),
+            existeElemento = uiState.cidade.naoEhVazioOuNulo(),
             textoDaDescricao = "Cidade",
             textoDoCampo = uiState.cidade
         )
         ColunaResultadoComponent(
-            existeElemento = uiState.estado.existeElemento(),
+            existeElemento = uiState.estado.naoEhVazioOuNulo(),
             textoDaDescricao = "Estado",
             textoDoCampo = uiState.estado
         )

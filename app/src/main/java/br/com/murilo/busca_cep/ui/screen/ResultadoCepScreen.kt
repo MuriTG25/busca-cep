@@ -31,8 +31,6 @@ fun ResultadoCepScreen(
     aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
     navegarParaTelaAnterior: () -> Unit = {},
 ) {
-    val context: Context = LocalContext.current
-    val clipboardManager: ClipboardManager = LocalClipboardManager.current
     when(uiState){
         ResultadoCepUiState.Carregando -> {
             TelaDeCarregamentoComponent()
@@ -52,8 +50,6 @@ fun ResultadoCepScreen(
             TelaDeSucessoComponent(
                 modifier = modifier,
                 uiState = uiState,
-                clipboardManager = clipboardManager,
-                context = context
             )
         }
     }
