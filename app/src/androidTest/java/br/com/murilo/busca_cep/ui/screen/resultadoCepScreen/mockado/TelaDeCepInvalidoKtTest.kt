@@ -7,14 +7,14 @@ import br.com.murilo.busca_cep.MainActivity
 import br.com.murilo.busca_cep.extras.clicaNoElementoPeloNome
 import br.com.murilo.busca_cep.extras.digitaNoCampoDeTexto
 import br.com.murilo.busca_cep.extras.esperaAteATelaAparecer
-import br.com.murilo.busca_cep.extras.esperaAteATelaAparecerPelaDescricao
 import br.com.murilo.busca_cep.extras.fakeClient
+import br.com.murilo.busca_cep.extras.mockEngineCepErro
 import br.com.murilo.busca_cep.extras.mockEngineErroConexao
 import br.com.murilo.busca_cep.extras.textoBotaoBuscarEndereco
-import br.com.murilo.busca_cep.extras.textoBotaoRecarregarTelaFalha
-import br.com.murilo.busca_cep.extras.textoBotaoVoltarTelaFalha
+import br.com.murilo.busca_cep.extras.textoBotaoVoltarTelaCepInvalido
 import br.com.murilo.busca_cep.extras.textoCampoTextoCep
 import br.com.murilo.busca_cep.extras.textoComCep
+import br.com.murilo.busca_cep.extras.textoFalhaTelaCepInvalido
 import br.com.murilo.busca_cep.extras.textoFalhaTelaErro
 import br.com.murilo.busca_cep.extras.verificaSeExisteOComponentPeloTexto
 import br.com.murilo.busca_cep.extras.verificaSeMostraOComponentePeloTexto
@@ -33,7 +33,7 @@ import org.junit.Test
 
 @UninstallModules(RestApiModule::class)
 @HiltAndroidTest
-class TelaDeFalhaKtTest {
+class TelaDeCepInvalidoKtTest {
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
@@ -48,36 +48,27 @@ class TelaDeFalhaKtTest {
     object FakeServiceModule {
         @Provides
         fun provideClient(): HttpClient {
-            return fakeClient(mockEngineErroConexao)
+            return fakeClient(mockEngineCepErro)
         }
     }
     private fun vaiParaAtelaDeResultados(){
         testeDeUi.digitaNoCampoDeTexto(textoCampoTextoCep, textoComCep)
         testeDeUi.clicaNoElementoPeloNome(textoBotaoBuscarEndereco)
-        testeDeUi.esperaAteATelaAparecer(textoFalhaTelaErro)
+        testeDeUi.esperaAteATelaAparecer(textoFalhaTelaCepInvalido)
     }
     @Test
-    fun deveMostarMensagemDeErroEOs2Botoes_QuandoFormosParaATelaDeErro(){
+    fun deveMostarMensagemDeErroEBotaoDeVolta_quandoFormosParaATelaDeCepInvalido(){
         vaiParaAtelaDeResultados()
-        testeDeUi.verificaSeExisteOComponentPeloTexto(textoFalhaTelaErro)
-        testeDeUi.verificaSeExisteOComponentPeloTexto(textoBotaoRecarregarTelaFalha)
-        testeDeUi.verificaSeOElementoEClicavelPeloTexto(textoBotaoRecarregarTelaFalha)
-        testeDeUi.verificaSeExisteOComponentPeloTexto(textoBotaoVoltarTelaFalha)
-        testeDeUi.verificaSeOElementoEClicavelPeloTexto(textoBotaoVoltarTelaFalha)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoFalhaTelaCepInvalido)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoVoltarTelaCepInvalido)
+        testeDeUi.verificaSeOElementoEClicavelPeloTexto(textoBotaoVoltarTelaCepInvalido)
     }
     @Test
-    fun deveVoltarParaATelaDeBusca_quandoClicarmosEmVoltar(){
+    fun deveVoltarParaATelaDeBusca_quandoClicarmosNoBotaoDeVoltar(){
         vaiParaAtelaDeResultados()
-        testeDeUi.clicaNoElementoPeloNome(textoBotaoVoltarTelaFalha)
+        testeDeUi.clicaNoElementoPeloNome(textoBotaoVoltarTelaCepInvalido)
         testeDeUi.esperaAteATelaAparecer(textoBotaoBuscarEndereco)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoCampoTextoCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoBuscarEndereco)
-    }
-    @Test
-    fun deveTentarRecarregarEFalhar_quandoClicarmosEmRecarregar(){
-        vaiParaAtelaDeResultados()
-        testeDeUi.clicaNoElementoPeloNome(textoBotaoRecarregarTelaFalha)
-        testeDeUi.verificaSeMostraOComponentePeloTexto(textoFalhaTelaErro)
-        testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoRecarregarTelaFalha)
     }
 }

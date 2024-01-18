@@ -18,19 +18,19 @@
           <timeTargetWasSelectedWithDropDown value="2024-01-11T16:36:49.687197200Z" />
         </State>
       </entry>
-      <entry key="deveAparecerDialogDeErro_quandoColocarmosLetraoNoCampoDeTexto()">
+      <entry key="deveAparecerOsCamposDeTextoEBotaoDeCopiar_quandoBuscarUmCepValido()">
         <State />
       </entry>
-      <entry key="deveAparecerDialogDeErro_quandoColocarmosTracoNoMeioDoCampoDeTexto()">
+      <entry key="deveConseguirSelecionarOElemento_quandoClicarESelecionarNele()">
         <State />
       </entry>
-      <entry key="deveAparecerDialogDeErro_quandoColocarmosUmNumeroNegativoNoCampoDeTexto()">
+      <entry key="deveMostarOsValoresDoEndereco_quandoBuscarUmCepValido()">
         <State />
       </entry>
-      <entry key="deveAparecerDialogDeErro_quandoColocarmosVirgulaNoCampoDeTexto()">
+      <entry key="deveVoltarParaATelaDeBusca_quandoClicarmosNoBotaoDeVoltar()">
         <State />
       </entry>
-      <entry key="deveMostarMensagemDeErroEOs2Botoes_QuandoFormosParaATelaDeErro()">
+      <entry key="fodase()">
         <State />
       </entry>
     </value>

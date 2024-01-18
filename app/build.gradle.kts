@@ -95,5 +95,6 @@ dependencies {
     // https://mvnrepository.com/artifact/io.mockk/mockk
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.amshove.kluent:kluent-android:1.73")
+    androidTestImplementation("org.amshove.kluent:kluent-android:1.73")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 }

@@ -20,9 +20,8 @@ val enderecoResponseParaTestesCompleto = EnderecoResponse(
     uf = "SP",
 )
 
-const val textoBotaoCopiarTudo = "Copiar tudo"
-
 const val textoEmBranco = "   "
+
 const val textoComCep = "13329655"
 const val textoCom1Caractere=  "8"
 const val textoComCepNaTela = "13329-655"
@@ -33,7 +32,25 @@ const val textoComTraco = "13329-55"
 const val textoComLetra = "a332955"
 const val textoComVirgula = "13329,55"
 const val textoComTracoNoInicio = "-1332965"
-
 const val textoFalhaTelaErro = "Falha ao buscar o Endereço"
+
 const val textoBotaoRecarregarTelaFalha = "Recarregar página"
 const val textoBotaoVoltarTelaFalha = "Voltar"
+const val textoFalhaTelaCepInvalido ="O valor do CEP é inválido"
+
+const val textoBotaoVoltarTelaCepInvalido = "Voltar"
+
+const val textoBotaoCopiarTelaSucesso = "Copiar tudo"
+const val textoCampoCepTelaSucesso = "CEP: "
+const val textoCampoLogradouroTelaSucesso = "Logradouro: "
+const val textoCampoComplementoTelaSucesso = "Complemento: "
+const val textoCampoBairroTelaSucesso = "Bairro: "
+const val textoCampoCidadeTelaSucesso = "Cidade: "
+const val textoCampoEstadoTelaSucesso = "Estado: "
+
+const val textoCepSeTelaSucesso = "01001-000"
+const val textoLogradouroSeTelaSucesso =  "Praça da Sé"
+const val textoComplementoSeTelaSucesso =  "lado ímpar"
+const val textoBairroSeTelaSucesso =  "Sé"
+const val textoCidadeSeTelaSucesso =  "São Paulo"
+const val textoEstadoSeTelaSucesso =  "SP"

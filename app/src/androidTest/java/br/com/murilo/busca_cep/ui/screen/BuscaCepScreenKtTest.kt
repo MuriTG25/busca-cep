@@ -18,7 +18,7 @@ import br.com.murilo.busca_cep.extras.mockEngineCerto
 import br.com.murilo.busca_cep.extras.rotacionarATela
 import br.com.murilo.busca_cep.extras.scrollaAteOElementoPeloNome
 import br.com.murilo.busca_cep.extras.textoBotaoBuscarEndereco
-import br.com.murilo.busca_cep.extras.textoBotaoCopiarTudo
+import br.com.murilo.busca_cep.extras.textoBotaoCopiarTelaSucesso
 import br.com.murilo.busca_cep.extras.textoBotaoVoltarDialog
 import br.com.murilo.busca_cep.extras.textoCampoTextoCep
 import br.com.murilo.busca_cep.extras.textoCom1Caractere
@@ -133,7 +133,7 @@ class BuscaCepScreenKtTest {
 
     @Test
     fun devemostraDialogDeErroDePreenchimento_quandoDigitamosMenosQue8Digitos() {
-        digitaCep(textoCom7Digitos)
+        digitaEPesquisaCep(textoCom7Digitos)
         testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoVoltarDialog)
     }
@@ -195,8 +195,8 @@ class BuscaCepScreenKtTest {
     @Test
     fun deveIrParaATelaDeResultado_quandoInserirmosUmCepDe8Digitos() {
         digitaEPesquisaCep(textoComCep)
-        testeDeUi.esperaAteATelaAparecer(textoBotaoCopiarTudo)
-        testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoCopiarTudo)
+        testeDeUi.esperaAteATelaAparecer(textoBotaoCopiarTelaSucesso)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoCopiarTelaSucesso)
     }
 
 

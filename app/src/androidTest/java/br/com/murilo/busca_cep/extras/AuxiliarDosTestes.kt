@@ -1,5 +1,8 @@
 package br.com.murilo.busca_cep.extras
 
+import android.app.Application
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertCountEquals
@@ -18,9 +21,11 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.unit.Dp
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.test.espresso.Espresso
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
+
 
 fun ComposeContentTestRule.verificaSeMostraOComponentePeloTexto(texto: String) {
     onNodeWithText(texto).assertIsDisplayed()
@@ -87,7 +92,7 @@ fun ComposeContentTestRule.verificaSeOElementoEClicavelPelaDescricao(texto: Stri
 fun ComposeContentTestRule.verificaPosicaoDoElemento(
     texto: String,
     posicaoCima: Dp,
-    posicaoEsquerda: Dp
+    posicaoEsquerda: Dp,
 ) {
     onNodeWithText(texto).assertPositionInRootIsEqualTo(
         expectedTop = posicaoCima,
@@ -119,7 +124,7 @@ fun ComposeContentTestRule.esperaAteATelaAparecerPelaDescricao(
 @OptIn(ExperimentalTestApi::class)
 fun ComposeContentTestRule.esperaAteASumirOElemento(
     texto: String,
-    tempo: Long = 3000L
+    tempo: Long = 3000L,
 ) {
     waitUntilDoesNotExist(
         matcher = SemanticsMatcher(
@@ -187,23 +192,15 @@ fun ComposeContentTestRule.limpaEDigitaNoCampoDeTexto(
     onNodeWithText(nomeDoCampo).performTextInput(textoADigitar)
     fechaOTeclado()
 }
+fun textoNoClipboard():String{
+    return Application.CLIPBOARD_SERVICE
+}
 
 fun UiDevice.rotacionarATela() {
     setOrientationLeft()
 }
 fun UiDevice.voltarARotacaoDaTela(){
     setOrientationNatural()
-}
-fun UiDevice.arrastaParaEsquerda(){
-    val altura = displayHeight / 2
-    val larguraInicial = (displayWidth/1.5).toInt()
-    swipe(larguraInicial,altura,0,altura,10)
-}
-fun UiDevice.arrastaParaADireita(){
-    val altura = displayHeight / 2
-    val larguraFinal = displayWidth - 50
-    val larguraInicial = displayWidth/3
-    swipe(larguraInicial,altura,larguraFinal,altura,10)
 }
 fun UiDevice.clicaNoCanto(){
     val y = 100
