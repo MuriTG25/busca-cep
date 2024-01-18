@@ -25,9 +25,22 @@ fun fakeClient(engine: HttpClientEngine):HttpClient{
         }
     }
 }
-val mockEngineCerto = MockEngine {
-    respond(
-        content = ByteReadChannel("""{
+private fun mocKEngineFactory(
+    conteudo: String = "",
+    httpStatusCode: HttpStatusCode = HttpStatusCode.OK
+):MockEngine {
+    return MockEngine {
+        respond(
+            content = ByteReadChannel(
+                conteudo
+            ),
+            status = httpStatusCode,
+            headers = headersOf(HttpHeaders.ContentType, "application/json")
+        )
+    }
+}
+val mockEngineCerto = mocKEngineFactory(
+    conteudo = """{
       "cep": "01001-000",
       "logradouro": "Praça da Sé",
       "complemento": "lado ímpar",
@@ -38,24 +51,13 @@ val mockEngineCerto = MockEngine {
       "gia": "1004",
       "ddd": "11",
       "siafi": "7107"
-    }""".trimIndent()),
-        status = HttpStatusCode.OK,
-        headers = headersOf(HttpHeaders.ContentType, "application/json")
-    )
-}
-val mockEngineCepErro = MockEngine {
-    respond(
-        content = ByteReadChannel("""{
+    }""".trimIndent(),
+)
+val mockEngineCepErro = mocKEngineFactory(
+    conteudo = """{
       "erro": "true"
-    }""".trimIndent()),
-        status = HttpStatusCode.OK,
-        headers = headersOf(HttpHeaders.ContentType, "application/json")
-    )
-}
-val mockEngineErroConexao = MockEngine {
-    respond(
-        content = ByteReadChannel(""),
-        status = HttpStatusCode.BadRequest,
-        headers = headersOf(HttpHeaders.ContentType, "application/json")
-    )
-}
+    }""".trimIndent(),
+)
+val mockEngineErroConexao = mocKEngineFactory(
+    httpStatusCode = HttpStatusCode.BadRequest
+)

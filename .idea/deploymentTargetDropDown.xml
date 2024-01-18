@@ -18,19 +18,19 @@
           <timeTargetWasSelectedWithDropDown value="2024-01-11T16:36:49.687197200Z" />
         </State>
       </entry>
-      <entry key="dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosEmVoltar()">
+      <entry key="deveAparecerDialogDeErro_quandoColocarmosLetraoNoCampoDeTexto()">
         <State />
       </entry>
-      <entry key="dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosForaDele()">
+      <entry key="deveAparecerDialogDeErro_quandoColocarmosTracoNoMeioDoCampoDeTexto()">
         <State />
       </entry>
-      <entry key="dadoUmTextoDigitado_deveContinuarMostrando_QuandoRotacionarmosATela()">
+      <entry key="deveAparecerDialogDeErro_quandoColocarmosUmNumeroNegativoNoCampoDeTexto()">
         <State />
       </entry>
-      <entry key="deveMostarOTextoDigitado_QuandoDigitarmosAlgoNoCampoDoCep()">
+      <entry key="deveAparecerDialogDeErro_quandoColocarmosVirgulaNoCampoDeTexto()">
         <State />
       </entry>
-      <entry key="deveMostarOsComponentesDaTela_QuandoAbrirOApp()">
+      <entry key="deveMostarMensagemDeErroEOs2Botoes_QuandoFormosParaATelaDeErro()">
         <State />
       </entry>
     </value>

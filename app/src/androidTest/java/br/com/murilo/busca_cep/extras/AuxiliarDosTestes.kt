@@ -215,7 +215,7 @@ fun UiDevice.minimizarOAppEReabrir() {
     pressHome()
     pressRecentApps()
     val mundoBolaIcone = findObject(
-        UiSelector().text("Busca Cep")
+        UiSelector().text("Busca CEP")
     )
     mundoBolaIcone.click()
 }

@@ -13,6 +13,7 @@ import br.com.murilo.busca_cep.extras.esperaAteATelaAparecer
 import br.com.murilo.busca_cep.extras.fakeClient
 import br.com.murilo.busca_cep.extras.mensagemDeErroCampoObrigatorio
 import br.com.murilo.busca_cep.extras.mensagemDialogCep
+import br.com.murilo.busca_cep.extras.minimizarOAppEReabrir
 import br.com.murilo.busca_cep.extras.mockEngineCerto
 import br.com.murilo.busca_cep.extras.rotacionarATela
 import br.com.murilo.busca_cep.extras.scrollaAteOElementoPeloNome
@@ -20,13 +21,20 @@ import br.com.murilo.busca_cep.extras.textoBotaoBuscarEndereco
 import br.com.murilo.busca_cep.extras.textoBotaoCopiarTudo
 import br.com.murilo.busca_cep.extras.textoBotaoVoltarDialog
 import br.com.murilo.busca_cep.extras.textoCampoTextoCep
+import br.com.murilo.busca_cep.extras.textoCom1Caractere
 import br.com.murilo.busca_cep.extras.textoCom7Digitos
+import br.com.murilo.busca_cep.extras.textoCom9Digitos
+import br.com.murilo.busca_cep.extras.textoCom9DigitosNaTela
 import br.com.murilo.busca_cep.extras.textoComCep
 import br.com.murilo.busca_cep.extras.textoComCepNaTela
+import br.com.murilo.busca_cep.extras.textoComLetra
+import br.com.murilo.busca_cep.extras.textoComTraco
+import br.com.murilo.busca_cep.extras.textoComTracoNoInicio
+import br.com.murilo.busca_cep.extras.textoComVirgula
 import br.com.murilo.busca_cep.extras.textoEmBranco
+import br.com.murilo.busca_cep.extras.verificaSeExisteOComponentPeloTexto
 import br.com.murilo.busca_cep.extras.verificaSeMostraOComponentePelaDescricao
 import br.com.murilo.busca_cep.extras.verificaSeMostraOComponentePeloTexto
-import br.com.murilo.busca_cep.extras.verificaSeNaoExisteOComponentePelaDescricao
 import br.com.murilo.busca_cep.extras.verificaSeNaoExisteOComponentePeloTexto
 import br.com.murilo.busca_cep.extras.voltarARotacaoDaTela
 import br.com.murilo.busca_cep.infraestrutura.di.module.RestApiModule
@@ -70,6 +78,10 @@ class BuscaCepScreenKtTest {
     private fun clicaNoBuscaEndereco() {
         testeDeUi.clicaNoElementoPeloNome(textoBotaoBuscarEndereco)
     }
+    private fun digitaEPesquisaCep(cep: String){
+        digitaCep(cep)
+        clicaNoBuscaEndereco()
+    }
 
     @Test
     fun deveMostarOsComponentesDaTela_QuandoAbrirOApp() {
@@ -90,7 +102,7 @@ class BuscaCepScreenKtTest {
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
     }
     @Test
-    fun dadoUmTextoDigitado_deveContinuarMostrando_QuandoRotacionarmosATela(){
+    fun dadoUmTextoDigitado_deveContinuarMostrandoOTexto_QuandoRotacionarmosATela(){
         digitaCep(textoComCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
         uiDevice.rotacionarATela()
@@ -98,7 +110,15 @@ class BuscaCepScreenKtTest {
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
         uiDevice.voltarARotacaoDaTela()
     }
-    //TODO fazer teste com a tela rotacionada
+    @Test
+    fun dadoUmTextoDigitado_deveContinuarMostrandoOTexto_QuandoFecharmosEReabrirmosOApp(){
+        digitaCep(textoComCep)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
+        uiDevice.minimizarOAppEReabrir()
+        testeDeUi.scrollaAteOElementoPeloNome(textoBotaoBuscarEndereco)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
+    }
+
     @Test
     fun deveAparecerMensagemDeCepObrigatorio_quandoClicarmosEmBuscaSemDigitar() {
         clicaNoBuscaEndereco()
@@ -107,23 +127,34 @@ class BuscaCepScreenKtTest {
 
     @Test
     fun deveAparecerMensagemDeCepObrigatorio_quandoDigitarmosUmTextoEmBranco() {
-        digitaCep(textoEmBranco)
-        clicaNoBuscaEndereco()
+        digitaEPesquisaCep(textoEmBranco)
         testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDeErroCampoObrigatorio)
     }
 
     @Test
-    fun mostraDialogDeErroDePreenchimento_quandoDigitamosMenosQue8Digitos() {
+    fun devemostraDialogDeErroDePreenchimento_quandoDigitamosMenosQue8Digitos() {
         digitaCep(textoCom7Digitos)
-        clicaNoBuscaEndereco()
         testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoVoltarDialog)
+    }
+    @Test
+    fun deveAparecerNada_quandoColarmosUmTextoComMaisDe8Digitos() {
+        digitaCep(textoCom9Digitos)
+        testeDeUi.verificaSeNaoExisteOComponentePeloTexto(textoCom9Digitos)
+        testeDeUi.verificaSeExisteOComponentPeloTexto(textoCampoTextoCep)
+        testeDeUi.verificaSeExisteOComponentPeloTexto(dicaCampoTextoCep)
+    }
+    @Test
+    fun dadoUmTextoCom8Digitos_deveIgnorarOCaracterExtra_quandoAdicionarmosUmDigitoAMais() {
+        digitaCep(textoComCep)
+        digitaCep(textoCom1Caractere)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoComCepNaTela)
+        testeDeUi.verificaSeNaoExisteOComponentePeloTexto(textoCom9DigitosNaTela)
     }
 
     @Test
     fun dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosEmVoltar() {
-        digitaCep(textoCom7Digitos)
-        clicaNoBuscaEndereco()
+        digitaEPesquisaCep(textoCom7Digitos)
         testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoVoltarDialog)
         testeDeUi.clicaNoElementoPeloNome(textoBotaoVoltarDialog)
@@ -133,20 +164,37 @@ class BuscaCepScreenKtTest {
 
     @Test
     fun dadoErroQueAbreDialog_deveFecharODialog_quandoClicarmosForaDele() {
-        digitaCep(textoCom7Digitos)
-        clicaNoBuscaEndereco()
+        digitaEPesquisaCep(textoCom7Digitos)
         testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoVoltarDialog)
         uiDevice.clicaNoCanto()
         testeDeUi.verificaSeNaoExisteOComponentePeloTexto(mensagemDialogCep)
         testeDeUi.verificaSeNaoExisteOComponentePeloTexto(textoBotaoVoltarDialog)
     }
+    @Test
+    fun deveAparecerDialogDeErro_quandoColocarmosTracoNoMeioDoCampoDeTexto() {
+        digitaEPesquisaCep(textoComTraco)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
+    }
+    @Test
+    fun deveAparecerDialogDeErro_quandoColocarmosLetraNoCampoDeTexto() {
+        digitaEPesquisaCep(textoComLetra)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
+    }
 
-    //TODO tenho que estar os outros erros na validacao do número
+    @Test
+    fun deveAparecerDialogDeErro_quandoColocarmosUmNumeroNaoInteiroNoCampoDeTexto() {
+        digitaEPesquisaCep(textoComVirgula)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
+    }
+    @Test
+    fun deveAparecerDialogDeErro_quandoColocarmosUmNumeroNegativoNoCampoDeTexto() {
+        digitaEPesquisaCep(textoComTracoNoInicio)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(mensagemDialogCep)
+    }
     @Test
     fun deveIrParaATelaDeResultado_quandoInserirmosUmCepDe8Digitos() {
-        digitaCep(textoComCep)
-        clicaNoBuscaEndereco()
+        digitaEPesquisaCep(textoComCep)
         testeDeUi.esperaAteATelaAparecer(textoBotaoCopiarTudo)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoCopiarTudo)
     }
