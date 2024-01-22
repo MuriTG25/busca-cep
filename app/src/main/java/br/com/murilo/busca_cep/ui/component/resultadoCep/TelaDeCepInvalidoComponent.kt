@@ -20,7 +20,7 @@ import br.com.murilo.busca_cep.ui.extras.tamanhoFonteGrande
 
 @Composable
 fun TelaDeCepInvalidoComponent(
-    voltarTelaAnterior: () -> Unit = {},
+    navegarAParaTelaAnterior: () -> Unit = {},
 ) {
     Column(
         Modifier
@@ -42,7 +42,7 @@ fun TelaDeCepInvalidoComponent(
             )
         BotaoComponent(
             texto = "Voltar",
-            noClicarBotao = voltarTelaAnterior,
+            noClicarBotao = navegarAParaTelaAnterior,
         )
     }
 }

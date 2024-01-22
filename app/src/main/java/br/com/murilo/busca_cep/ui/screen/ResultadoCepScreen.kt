@@ -14,7 +14,7 @@ fun ResultadoCepScreen(
     modifier: Modifier = Modifier,
     uiState: ResultadoCepUiState,
     aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
-    navegarParaTelaAnterior: () -> Unit = {},
+    navegarAParaTelaAnterior: () -> Unit = {},
 ) {
     when (uiState) {
         ResultadoCepUiState.Carregando -> {
@@ -24,13 +24,13 @@ fun ResultadoCepScreen(
         ResultadoCepUiState.Falha -> {
             TelaDeFalhaComponent(
                 aoTentarBuscarNovamenteOEndereco = aoTentarBuscarNovamenteOEndereco,
-                voltarTelaAnterior = navegarParaTelaAnterior,
+                navegarAParaTelaAnterior = navegarAParaTelaAnterior,
             )
         }
 
         ResultadoCepUiState.CepInvalido -> {
             TelaDeCepInvalidoComponent(
-                voltarTelaAnterior = navegarParaTelaAnterior
+                navegarAParaTelaAnterior = navegarAParaTelaAnterior
             )
         }
 
@@ -38,6 +38,7 @@ fun ResultadoCepScreen(
             TelaDeSucessoComponent(
                 modifier = modifier,
                 uiState = uiState,
+                navegarParaATelaAnterior = navegarAParaTelaAnterior
             )
         }
     }

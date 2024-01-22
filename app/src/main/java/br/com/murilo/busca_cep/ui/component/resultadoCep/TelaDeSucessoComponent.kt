@@ -35,6 +35,7 @@ fun TelaDeSucessoComponent(
     uiState: ResultadoCepUiState.Sucesso,
     clipboardManager: ClipboardManager = LocalClipboardManager.current,
     context: Context = LocalContext.current,
+    navegarParaATelaAnterior: () -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -84,6 +85,10 @@ fun TelaDeSucessoComponent(
                 )
                 context.mensagemDeAviso("Texto copiado para o clipboard")
             }
+        )
+        BotaoComponent(
+            texto = "Voltar",
+            noClicarBotao = navegarParaATelaAnterior
         )
         //TODO Ainda vou implementar essa função de maps
 //        GoogleMap(

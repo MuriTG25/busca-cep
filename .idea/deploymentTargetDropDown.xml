@@ -43,7 +43,7 @@
       <entry key="deveMostrarOsDadosDoCep_quandoInserirUmCepValido()">
         <State />
       </entry>
-      <entry key="fodase()">
+      <entry key="deveVoltarParaATelaDeBusca_quandoClicarmosNoBotaoDeVoltar()">
         <State />
       </entry>
     </value>

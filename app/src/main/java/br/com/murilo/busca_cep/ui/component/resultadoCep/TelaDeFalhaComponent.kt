@@ -21,7 +21,7 @@ import br.com.murilo.busca_cep.ui.extras.tamanhoFonteGrande
 @Composable
 fun TelaDeFalhaComponent(
     aoTentarBuscarNovamenteOEndereco: () -> Unit = {},
-    voltarTelaAnterior: () -> Unit = {},
+    navegarAParaTelaAnterior: () -> Unit = {},
 ) {
     Column(
         Modifier
@@ -47,7 +47,7 @@ fun TelaDeFalhaComponent(
         )
         BotaoComponent(
             texto = "Voltar",
-            noClicarBotao = voltarTelaAnterior,
+            noClicarBotao = navegarAParaTelaAnterior,
         )
     }
 }

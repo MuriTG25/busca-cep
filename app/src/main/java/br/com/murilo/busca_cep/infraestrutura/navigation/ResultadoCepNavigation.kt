@@ -25,7 +25,7 @@ fun NavGraphBuilder.ResultadoCepNavController(
                 aoTentarBuscarNovamenteOEndereco = {
                     viewModel.carregaEndereco(cep)
                 },
-                navegarParaTelaAnterior = navegarParaTelaAnterior,
+                navegarAParaTelaAnterior = navegarParaTelaAnterior,
             )
         }
     }

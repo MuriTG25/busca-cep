@@ -12,6 +12,7 @@ import br.com.murilo.busca_cep.extras.mockEngineCerto
 import br.com.murilo.busca_cep.extras.textoBairroSeTelaSucesso
 import br.com.murilo.busca_cep.extras.textoBotaoBuscarEndereco
 import br.com.murilo.busca_cep.extras.textoBotaoCopiarTelaSucesso
+import br.com.murilo.busca_cep.extras.textoBotaoVoltarTelaCepInvalido
 import br.com.murilo.busca_cep.extras.textoCampoBairroTelaSucesso
 import br.com.murilo.busca_cep.extras.textoCampoCepTelaSucesso
 import br.com.murilo.busca_cep.extras.textoCampoCidadeTelaSucesso
@@ -87,6 +88,14 @@ class TelaDeSucessoKtTest {
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoBairroSeTelaSucesso)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoCidadeSeTelaSucesso)
         testeDeUi.verificaSeMostraOComponentePeloTexto(textoEstadoSeTelaSucesso)
+    }
+    @Test
+    fun deveVoltarParaATelaDeBusca_quandoClicarmosNoBotaoDeVoltar(){
+        vaiParaAtelaDeResultados()
+        testeDeUi.clicaNoElementoPeloNome(textoBotaoVoltarTelaCepInvalido)
+        testeDeUi.esperaAteATelaAparecer(textoBotaoBuscarEndereco)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoCampoTextoCep)
+        testeDeUi.verificaSeMostraOComponentePeloTexto(textoBotaoBuscarEndereco)
     }
     //TODO preciso saber como fazer teste para saber se o elemento é copiavel
     //TODO preciso saber como verificar clipboard
