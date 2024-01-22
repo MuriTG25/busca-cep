@@ -31,7 +31,7 @@ fun CampoDeTextoComponent(
         value = valor,
         onValueChange = naMudancaDeValor,
         label = {
-            Text(text = nomeDaLabel)
+            TextoComponent(texto = nomeDaLabel)
         },
         shape = RoundedCornerShape(20),
         keyboardOptions = KeyboardOptions(
@@ -41,7 +41,7 @@ fun CampoDeTextoComponent(
         ),
         maxLines = maximoDeLinhas,
         placeholder = {
-            Text(text = dicaDoCampo)
+            TextoComponent(texto = dicaDoCampo)
         },
         visualTransformation = transformacaoVisual
     )

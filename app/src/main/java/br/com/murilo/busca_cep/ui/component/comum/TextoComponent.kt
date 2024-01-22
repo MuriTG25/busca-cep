@@ -1,6 +1,7 @@
 package br.com.murilo.busca_cep.ui.component.comum
 
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +24,7 @@ fun TextoComponent(
     fontSize: TextUnit = tamanhoFontePadrao,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     fontWeight: FontWeight = FontWeight.Normal,
-    color: Color = Color.Black
+    color: Color = MaterialTheme.colorScheme.onBackground,
 ) {
     Text(
         modifier = modifier,
@@ -45,7 +46,7 @@ fun TextoCopiavelComponent(
     fontSize: TextUnit = tamanhoFontePadrao,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     fontWeight: FontWeight = FontWeight.Normal,
-    color: Color = Color.Black
+    color: Color = MaterialTheme.colorScheme.onBackground,
 ) {
     SelectionContainer {
         TextoComponent(

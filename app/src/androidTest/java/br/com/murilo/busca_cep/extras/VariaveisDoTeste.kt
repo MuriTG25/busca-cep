@@ -50,7 +50,9 @@ const val textoCampoEstadoTelaSucesso = "Estado: "
 
 const val textoCepSeTelaSucesso = "01001-000"
 const val textoLogradouroSeTelaSucesso =  "Praça da Sé"
-const val textoComplementoSeTelaSucesso =  "lado ímpar"
+const val textoComplementoSeTelaSucesso = "lado ímpar"
 const val textoBairroSeTelaSucesso =  "Sé"
 const val textoCidadeSeTelaSucesso =  "São Paulo"
 const val textoEstadoSeTelaSucesso =  "SP"
+
+const val descricaoTelaCarregamento = "Tela de Carregamento"

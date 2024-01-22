@@ -2,15 +2,10 @@ package br.com.murilo.busca_cep.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
-
-val amareloPrimario = Color(255, 121 ,0 )
-val amareloSecundario = Color(205, 153 ,43)
-val azulPrimario = Color(0, 131, 202)
-val azulSecundario = Color(0 ,65, 107)
+val corPrimariaEscuro = Color(0xFF00416B)
+val naCorPrimaria = Color(0xFFFFFFFF)
+val corPrimariaClaro = Color(0xFF0083CA)
+val corBackgroundLight = Color(0xFFFFD400)
+val corBackgroundDark = Color(0xFFCD992B)
+val noBackground = Color(0xFF000000)
+val corErro = Color(0xFFBA1A1A)

@@ -1,5 +1,6 @@
 package br.com.murilo.busca_cep.ui.theme
 
+
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -15,33 +16,31 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = azulSecundario,
-    secondary = amareloSecundario,
-    tertiary = azulPrimario
+private val temaClaro = lightColorScheme(
+    primary = corPrimariaClaro,
+    onPrimary = naCorPrimaria,
+    secondary = corPrimariaEscuro,
+    onSecondary = naCorPrimaria,
+    background = corBackgroundLight,
+    onBackground = noBackground,
+    error = corErro,
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = azulPrimario,
-    secondary = amareloSecundario,
-    tertiary = azulSecundario
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val temaEscuro = darkColorScheme(
+    primary = corPrimariaEscuro,
+    onPrimary = naCorPrimaria,
+    secondary = corPrimariaClaro,
+    onSecondary = naCorPrimaria,
+    background = corBackgroundDark,
+    onBackground = noBackground,
+    error = corErro,
 )
 
 @Composable
 fun BuscacepTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -50,8 +49,8 @@ fun BuscacepTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> temaEscuro
+        else -> temaClaro
     }
     val view = LocalView.current
     if (!view.isInEditMode) {

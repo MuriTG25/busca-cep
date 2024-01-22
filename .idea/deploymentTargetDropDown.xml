@@ -18,16 +18,29 @@
           <timeTargetWasSelectedWithDropDown value="2024-01-11T16:36:49.687197200Z" />
         </State>
       </entry>
-      <entry key="deveAparecerOsCamposDeTextoEBotaoDeCopiar_quandoBuscarUmCepValido()">
+      <entry key="dadaAConexaoOffline_deveMostarATelaDeFalha_quandoPesquisarUmCep()">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\User\.android\avd\Pixel_XL_API_26_2.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-01-19T17:11:01.702269200Z" />
+        </State>
+      </entry>
+      <entry key="deveMostarATelaDeCarregamento_quandoPesquisarUmCep()">
         <State />
       </entry>
-      <entry key="deveConseguirSelecionarOElemento_quandoClicarESelecionarNele()">
+      <entry key="deveMostarATelaDeCepInvalido_quandoInserirUmCepInvalido()">
         <State />
       </entry>
-      <entry key="deveMostarOsValoresDoEndereco_quandoBuscarUmCepValido()">
-        <State />
-      </entry>
-      <entry key="deveVoltarParaATelaDeBusca_quandoClicarmosNoBotaoDeVoltar()">
+      <entry key="deveMostrarOsDadosDoCep_quandoInserirUmCepValido()">
         <State />
       </entry>
       <entry key="fodase()">
