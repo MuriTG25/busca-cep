@@ -1,5 +1,6 @@
 package br.com.murilo.busca_cep.ui.component.comum
 
+import android.os.Build
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -35,8 +36,6 @@ fun BotaoComponent(
         onClick = noClicarBotao,
         modifier = modifier.widthIn(min= larguraMinima),
         shape = RoundedCornerShape(20),
-
-
         ) {
         if (temImagem){
             Icon(
